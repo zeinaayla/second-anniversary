@@ -1,391 +1,225 @@
-const nextButton = document.getElementById("nextBtn");
-const prevButton = document.getElementById("prevBtn");
+/* ==================================================
+   ELEMENTS
+================================================== */
 
-const yesButton = document.querySelector(".yes-btn");
-const noButton = document.querySelector(".no-btn");
+const opening = document.getElementById("opening");
+const journey = document.getElementById("journey");
 
-const leftPage = document.getElementById("leftPage");
-const rightPage = document.getElementById("rightPage");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-const flipPage = document.getElementById("flipPage");
-const flipFront = document.getElementById("flipFront");
-const flipBack = document.getElementById("flipBack");
-
-const nextButton = document.getElementById("nextPage");
-const prevButton = document.getElementById("prevPage");
-
-const pageNumber = document.getElementById("pageNumber");
-
-const audio = document.getElementById("loveSong");
-
-const templates = Array.from(
-  document.querySelectorAll("#pages .book-content")
-);
+const loveSong = document.getElementById("loveSong");
 
 
-/* =====================================================
-   BOOK STATE
-===================================================== */
-
-let currentPage = 0;
-let isTurning = false;
-
-const totalPages = templates.length;
-
-
-/* =====================================================
-   HELPERS
-===================================================== */
-
-function clonePage(index) {
-  if (index < 0 || index >= totalPages) {
-    return null;
-  }
-
-  return templates[index].cloneNode(true);
-}
-
-
-function putPage(element, index) {
-  element.innerHTML = "";
-
-  const page = clonePage(index);
-
-  if (page) {
-    element.appendChild(page);
-  }
-}
-
-
-function updatePageNumber() {
-  const first = currentPage + 1;
-  const second = Math.min(currentPage + 2, totalPages);
-
-  if (currentPage >= totalPages - 1) {
-    pageNumber.textContent = `${totalPages} / ${totalPages}`;
-  } else {
-    pageNumber.textContent = `${first}–${second} / ${totalPages}`;
-  }
-}
-
-
-function renderBook() {
-  putPage(leftPage, currentPage);
-  putPage(rightPage, currentPage + 1);
-
-  updatePageNumber();
-
-  prevButton.disabled = currentPage <= 0;
-  nextButton.disabled = currentPage >= totalPages - 2;
-
-  prevButton.style.opacity =
-    currentPage <= 0 ? "0.35" : "1";
-
-  nextButton.style.opacity =
-    currentPage >= totalPages - 2 ? "0.35" : "1";
-}
-
-
-/* =====================================================
-   OPEN BOOK
-===================================================== */
-
-function openBook() {
-
-  cover.classList.add("hidden");
-
-  book.classList.remove("hidden");
-
-  currentPage = 0;
-
-  renderBook();
-
-  /*
-    Browsers usually block autoplay.
-    Because the audio starts from the YES click,
-    this is considered a user interaction and should play.
-  */
-
-  audio.currentTime = 0;
-
-  audio.play().catch(() => {
-    console.log("Audio playback was blocked.");
-  });
-}
-
-
-/* =====================================================
+/* ==================================================
    YES BUTTON
-===================================================== */
+================================================== */
 
-yesButton.addEventListener("click", openBook);
+yesBtn.addEventListener("click", () => {
+
+  // Start the music after the user's interaction
+  loveSong.volume = 0.45;
+
+  loveSong.play().catch(() => {
+    // Browser may block autoplay.
+    // The journey still opens normally.
+  });
 
 
-/* =====================================================
-   RUN-AWAY NO BUTTON
-===================================================== */
+  // Hide opening screen
+  opening.classList.add("hidden");
+
+
+  // Show the journey
+  journey.classList.remove("hidden");
+
+
+  // Start from the top
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+
+  // Reveal sections one by one
+  setTimeout(() => {
+    revealSections();
+  }, 300);
+
+});
+
+
+/* ==================================================
+   RUNAWAY NO BUTTON 😂
+================================================== */
+
+let noMoves = 0;
+
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+noBtn.addEventListener("click", moveNoButton);
+
 
 function moveNoButton() {
 
-  const parent = noButton.parentElement;
+  noMoves++;
 
-  const parentRect = parent.getBoundingClientRect();
+  const maxX = Math.min(
+    window.innerWidth / 2 - 70,
+    180
+  );
 
-  const maxX =
-    Math.max(
-      20,
-      parentRect.width / 2 - 70
-    );
+  const maxY = 120;
 
-  const maxY = 45;
+  const randomX =
+    Math.floor(Math.random() * (maxX * 2 + 1)) - maxX;
 
-  const x =
-    (Math.random() * 2 - 1) * maxX;
+  const randomY =
+    Math.floor(Math.random() * (maxY * 2 + 1)) - maxY;
 
-  const y =
-    (Math.random() * 2 - 1) * maxY;
 
-  noButton.style.transform =
-    `translate(${x}px, ${y}px)`;
+  noBtn.style.position = "relative";
+
+  noBtn.style.transform =
+    `translate(${randomX}px, ${randomY}px) rotate(${randomX / 10}deg)`;
+
+
+  // After a few attempts, make the message more obvious 😂
+  if (noMoves >= 3) {
+    noBtn.textContent = "NO 😭";
+  }
+
+  if (noMoves >= 6) {
+    noBtn.textContent = "خلص YES 😂";
+  }
+
 }
 
 
-noButton.addEventListener("mouseenter", moveNoButton);
+/* ==================================================
+   SECTION REVEAL
+================================================== */
 
-noButton.addEventListener("touchstart", function(event) {
-  event.preventDefault();
-  moveNoButton();
-});
+function revealSections() {
 
-noButton.addEventListener("click", function(event) {
-  event.preventDefault();
-  moveNoButton();
-});
+  const sections =
+    document.querySelectorAll(".journey-section");
 
 
-/* =====================================================
-   PAGE TURN — NEXT
-===================================================== */
+  sections.forEach((section, index) => {
 
-function nextPage() {
-
-  if (isTurning) return;
-
-  if (currentPage >= totalPages - 2) {
-    return;
-  }
-
-  isTurning = true;
-
-  /*
-    The right page is the page that visually turns.
-  */
-
-  const currentRight = clonePage(currentPage + 1);
-  const nextLeft = clonePage(currentPage + 2);
-
-  flipFront.innerHTML = "";
-
-  if (currentRight) {
-    flipFront.appendChild(currentRight);
-  }
-
-  flipBack.innerHTML = "";
-
-  if (nextLeft) {
-    flipBack.appendChild(nextLeft);
-  }
-
-  flipPage.style.display = "block";
-
-  /*
-    Reset the animation.
-  */
-
-  flipPage.style.transition = "none";
-  flipPage.style.transform = "rotateY(0deg)";
-
-  /*
-    Force browser reflow.
-  */
-
-  void flipPage.offsetWidth;
-
-  /*
-    Start the page turn.
-  */
-
-  flipPage.style.transition =
-    "transform 0.9s cubic-bezier(.65,.05,.36,1)";
-
-  flipPage.style.transform =
-    "rotateY(-180deg)";
+    section.style.opacity = "0";
+    section.style.transform = "translateY(30px)";
+    section.style.transition =
+      "opacity 0.9s ease, transform 0.9s ease";
 
 
-  setTimeout(() => {
+    setTimeout(() => {
 
-    currentPage += 2;
+      section.style.opacity = "1";
+      section.style.transform = "translateY(0)";
 
-    renderBook();
+    }, index * 120);
 
-    flipPage.style.transition = "none";
-    flipPage.style.transform = "rotateY(0deg)";
-    flipPage.style.display = "none";
+  });
 
-    flipFront.innerHTML = "";
-    flipBack.innerHTML = "";
-
-    isTurning = false;
-
-  }, 920);
 }
 
 
-/* =====================================================
-   PAGE TURN — PREVIOUS
-===================================================== */
+/* ==================================================
+   SCROLL ANIMATIONS
+================================================== */
 
-function previousPage() {
+const observer =
+  new IntersectionObserver(
+    (entries) => {
 
-  if (isTurning) return;
+      entries.forEach((entry) => {
 
-  if (currentPage <= 0) {
-    return;
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("visible");
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+
+document
+  .querySelectorAll(
+    ".message-card, .polaroid, .memory-card, .gift-single, .promise-card, .emotional-box, .love-letter"
+  )
+  .forEach((element) => {
+
+    element.classList.add("scroll-hidden");
+
+    observer.observe(element);
+
+  });
+
+
+/* ==================================================
+   SCROLL STYLE
+================================================== */
+
+const scrollStyle = document.createElement("style");
+
+scrollStyle.innerHTML = `
+
+  .scroll-hidden {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+      opacity 0.8s ease,
+      transform 0.8s ease;
   }
 
-  isTurning = true;
-
-  /*
-    When going backwards, the left page comes back.
-  */
-
-  const previousRight = clonePage(currentPage - 1);
-  const currentLeft = clonePage(currentPage);
-
-  flipFront.innerHTML = "";
-
-  if (previousRight) {
-    flipFront.appendChild(previousRight);
+  .scroll-hidden.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  flipBack.innerHTML = "";
+`;
 
-  if (currentLeft) {
-    flipBack.appendChild(currentLeft);
-  }
-
-  /*
-    Put the flipping sheet on the left side.
-  */
-
-  flipPage.style.left = "0";
-  flipPage.style.right = "auto";
-
-  flipPage.style.transformOrigin =
-    "right center";
-
-  flipPage.style.display = "block";
-
-  flipPage.style.transition = "none";
-
-  flipPage.style.transform =
-    "rotateY(0deg)";
-
-  void flipPage.offsetWidth;
-
-  flipPage.style.transition =
-    "transform 0.9s cubic-bezier(.65,.05,.36,1)";
-
-  flipPage.style.transform =
-    "rotateY(180deg)";
+document.head.appendChild(scrollStyle);
 
 
-  setTimeout(() => {
+/* ==================================================
+   MUSIC VOLUME
+================================================== */
 
-    currentPage -= 2;
-
-    renderBook();
-
-    /*
-      Return flip sheet to normal right-side position.
-    */
-
-    flipPage.style.transition = "none";
-    flipPage.style.transform = "rotateY(0deg)";
-    flipPage.style.left = "auto";
-    flipPage.style.right = "0";
-    flipPage.style.transformOrigin =
-      "left center";
-
-    flipPage.style.display = "none";
-
-    flipFront.innerHTML = "";
-    flipBack.innerHTML = "";
-
-    isTurning = false;
-
-  }, 920);
-}
+loveSong.volume = 0.45;
 
 
-/* =====================================================
-   BUTTONS
-===================================================== */
+/* ==================================================
+   IMAGE LOAD FALLBACK
+================================================== */
 
-nextButton.addEventListener("click", nextPage);
+document.querySelectorAll("img").forEach((image) => {
 
-prevButton.addEventListener("click", previousPage);
+  image.addEventListener("error", () => {
 
+    image.style.display = "none";
 
-/* =====================================================
-   KEYBOARD
-===================================================== */
-
-document.addEventListener("keydown", function(event) {
-
-  if (book.classList.contains("hidden")) {
-    return;
-  }
-
-  if (event.key === "ArrowRight") {
-    nextPage();
-  }
-
-  if (event.key === "ArrowLeft") {
-    previousPage();
-  }
+  });
 
 });
 
 
-/* =====================================================
-   CLICK THE PAGE TO TURN
-===================================================== */
+/* ==================================================
+   PREVENT NO BUTTON FROM GOING OFF SCREEN
+================================================== */
 
-rightPage.addEventListener("click", function() {
+window.addEventListener("resize", () => {
 
-  if (isTurning) return;
-
-  nextPage();
+  noBtn.style.transform = "translate(0, 0)";
 
 });
-
-
-leftPage.addEventListener("click", function() {
-
-  if (isTurning) return;
-
-  previousPage();
-
-});
-
-
-/* =====================================================
-   INITIAL STATE
-===================================================== */
-
-book.classList.add("hidden");
-
-flipPage.style.display = "none";
-
-renderBook();
