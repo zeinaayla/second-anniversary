@@ -1,5 +1,5 @@
-const cover = document.getElementById("cover");
-const book = document.getElementById("book");
+const nextButton = document.getElementById("nextBtn");
+const prevButton = document.getElementById("prevBtn");
 
 const yesButton = document.querySelector(".yes-btn");
 const noButton = document.querySelector(".no-btn");
