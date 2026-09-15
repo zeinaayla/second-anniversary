@@ -3,329 +3,1094 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>لزنزونتك 🤍</title>
-
+  <title>Would you be my forever? 🤍</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <!-- =========================
-       الغلاف
+       COVER
   ========================== -->
-  <section id="cover" class="cover">
 
-    <div class="cover-content">
+  <div id="cover" class="cover">
+    <div class="cover-book">
 
-      <p class="small-intro">إلى حبيبي برهومي 🤍</p>
+      <p class="cover-small">إلى حبيبي برهومي 🤍</p>
 
-      <h1>Would you be<br>my forever?</h1>
+      <h1>
+        Would you be<br>
+        my forever?
+      </h1>
 
       <p class="cover-question">
         عندي سؤال صغير إلك...
       </p>
 
-      <div class="answer-buttons">
+      <div class="cover-buttons">
+        <button id="yesBtn" class="yes-btn">YES 🤍</button>
+        <button id="noBtn" class="no-btn">NO</button>
+      </div>
 
-        <button id="yesBtn" class="yes-btn">
-          نعم 🤍
-        </button>
+      <p class="cover-hint">اضغط نعم وافتح كتابنا... 📖</p>
 
-        <button id="noBtn" class="no-btn">
-          لا
-        </button>
+    </div>
+  </div>
 
+
+  <!-- =========================
+       BOOK
+  ========================== -->
+
+  <main id="book" class="book hidden">
+
+    <div class="book-shadow"></div>
+
+    <div class="book-wrapper">
+
+      <!-- LEFT PAGE -->
+      <div class="book-page left-page" id="leftPage"></div>
+
+      <!-- RIGHT PAGE -->
+      <div class="book-page right-page" id="rightPage"></div>
+
+      <!-- FLIPPING PAGE -->
+      <div class="flip-page" id="flipPage">
+        <div class="flip-front" id="flipFront"></div>
+        <div class="flip-back" id="flipBack"></div>
       </div>
 
     </div>
 
-  </section>
+    <div class="book-controls">
+      <button id="prevBtn" class="book-btn">‹</button>
 
+      <span id="pageNumber">1 / 1</span>
 
-  <!-- =========================
-       الكتاب
-  ========================== -->
-  <main id="book" class="book hidden">
+      <button id="nextBtn" class="book-btn">›</button>
+    </div>
 
-    <!-- الصفحة 1 -->
-    <section class="page chapter-page">
-
-      <p class="chapter-number">الفصل الأول</p>
-
-      <h2>كيف بلّشت حكايتنا؟</h2>
-
-      <p>
-        يمكن وقتها ما كنا نعرف شو رح تصير هالمحادثة بالنسبة إلنا،
-        ولا كنا نعرف إن كلام بسيط ممكن يكون بداية سنتين مليانين حب وعوض.
-      </p>
-
-      <p>
-        بس من هون...
-        <br>
-        بلّشت حكايتنا. 🤍
-      </p>
-
-      <button class="next-btn">أول كلمة... ↓</button>
-
-    </section>
-
-
-    <!-- الصفحة 2 -->
-    <section class="page">
-
-      <h2>أول رسائلنا 🥹</h2>
-
-      <div class="first-messages">
-
-        <img src="img_0890.png" alt="أول رسالة">
-
-        <img src="img_0891.png" alt="أول رسالة">
-
-      </div>
-
-      <p class="page-caption">
-        وإحنا لسا ما كنا نعرف شو رح نصير لبعض.
-      </p>
-
-      <button class="next-btn">نكمل 🤍</button>
-
-    </section>
-
-
-    <!-- الصفحة 3 -->
-    <section class="page chapter-page">
-
-      <p class="chapter-number">الفصل الثاني</p>
-
-      <h2>سنتين منّا</h2>
-
-      <p>
-        سنتين مرّوا...
-      </p>
-
-      <p>
-        بس لما أتطلع ورا،
-        بحس إني عشت فيهم عمر كامل من التفاصيل
-        والضحكات والمواقف واللحظات اللي صارت إلنا لحالنا.
-      </p>
-
-      <button class="next-btn">شوف أيامنا 🤍</button>
-
-    </section>
-
-
-    <!-- الصفحة 4 -->
-    <section class="page photo-page">
-
-      <h2>تفاصيلنا</h2>
-
-      <div class="photo-grid">
-
-        <img src="08f85e5d-c4ec-494d-8114-668283ebc342.jpeg">
-        <img src="78A09A2A-F27D-4072-ABD0-EEF3AFDBA7E3.jpeg">
-        <img src="img_0894.png">
-        <img src="img_1987.jpeg">
-
-      </div>
-
-      <button class="next-btn">🤍</button>
-
-    </section>
-
-
-    <!-- الصفحة 5 -->
-    <section class="page photo-page">
-
-      <div class="photo-grid">
-
-        <img src="img_2549.jpeg">
-        <img src="img_2575.jpeg">
-        <img src="img_4355.jpeg">
-        <img src="img_4361.jpeg">
-
-      </div>
-
-      <button class="next-btn">🤍</button>
-
-    </section>
-
-
-    <!-- الصفحة 6 -->
-    <section class="page photo-page">
-
-      <div class="photo-grid">
-
-        <img src="img_4373.jpeg">
-        <img src="img_4389.jpeg">
-        <img src="img_9634.jpeg">
-        <img src="img_2020.jpeg">
-
-      </div>
-
-      <p class="page-caption">
-        ضحكتنا، أماكننا، إيدك بإيدي... نحن. 🤍
-      </p>
-
-      <button class="next-btn">نكمل</button>
-
-    </section>
-
-
-    <!-- الصفحة 7 -->
-    <section class="page chapter-page">
-
-      <p class="chapter-number">الفصل الثالث</p>
-
-      <h2>الأشياء الصغيرة اللي صارت كبيرة</h2>
-
-      <p>
-        بعض الأشياء بتصير غالية علينا...
-      </p>
-
-      <p>
-        مش بسبب قيمتها،
-        <br>
-        بسبب الشخص اللي أعطاها إلنا. 🤍
-      </p>
-
-      <button class="next-btn">الهدايا 🎁</button>
-
-    </section>
-
-
-    <!-- الصفحة 8 -->
-    <section class="page photo-page">
-
-      <div class="photo-grid">
-
-        <img src="img_6691.jpeg">
-        <img src="8f13664c-94dc-4852-8498-787a017f27d0.jpeg">
-        <img src="img_1899.jpeg">
-        <img src="img_2040.jpeg">
-
-      </div>
-
-      <button class="next-btn">🤍</button>
-
-    </section>
-
-
-    <!-- الصفحة 9 -->
-    <section class="page photo-page">
-
-      <div class="gift-highlight">
-
-        <img src="img_0908.png">
-
-        <p>
-          أشياء تمنّيتها...
-          <br>
-          وصارت ذكريات منك. 🤍
-        </p>
-
-      </div>
-
-      <button class="next-btn">نكمل</button>
-
-    </section>
-
-
-    <!-- الصفحة 10 -->
-    <section class="page photo-page">
-
-      <div class="gift-highlight">
-
-        <img src="img_4378.jpeg">
-
-        <p>
-          وبعض الأشياء الصغيرة...
-          <br>
-          بتضل كبيرة بقلبي.
-        </p>
-
-      </div>
-
-      <button class="next-btn">رسائلك 💌</button>
-
-    </section>
-
-
-    <!-- الصفحة 11 -->
-    <section class="page chapter-page">
-
-      <p class="chapter-number">الفصل الرابع</p>
-
-      <h2>أشياء عطيتني إياها من غير ما تعرف</h2>
-
-      <p>
-        يمكن إنت بتفكر إنك كنت بس بتحكي معي...
-      </p>
-
-      <p>
-        بس أنا كنت عم أجمع منك أشياء أكبر من الكلام.
-      </p>
-
-      <div class="little-words">
-        <span>أمان</span>
-        <span>حب</span>
-        <span>طمأنينة</span>
-        <span>اهتمام</span>
-      </div>
-
-      <button class="next-btn">شوي من كلامك 🤍</button>
-
-    </section>
-
-
-    <!-- الصفحات القادمة رح نكملها -->
-    <section class="page chapter-page">
-
-      <h2>لسا في صفحات...</h2>
-
-      <p>
-        ولسا الحكاية ما خلصت. 🤍
-      </p>
-
-      <button class="next-btn">نكمل...</button>
-
-    </section>
-
-
-    <!-- النهاية -->
-    <section class="page final-page">
-
-      <p>
-        إذا سألتني اليوم
-        <br>
-        شو بدي من كل الصفحات الجاية؟
-      </p>
-
-      <h2>بدي إياها كلها معك. 🤍</h2>
-
-      <p>
-        هاي كانت السنة الثانية...
-        <br>
-        ولسا عنا عمر كامل من الصفحات. ♾️🤍
-      </p>
-
-      <p class="forever-stamp">
-        في الدنيا والآخرة. 🤍
-      </p>
-
-      <p class="signature">
-        — زنزونتك
-      </p>
-
-    </section>
+    <p class="book-hint">
+      اقلب الصفحات... 🤍
+    </p>
 
   </main>
 
 
   <!-- =========================
-       الأغنية
+       ALL BOOK PAGES
+       Hidden templates used by JS
   ========================== -->
 
+  <div id="pages" class="page-templates">
+
+
+    <!-- PAGE 1 -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+        <p class="chapter-number">الفصل الأول</p>
+
+        <h2>كيف بلّشت حكايتنا؟</h2>
+
+        <p>
+          يمكن وقتها ما كنا نعرف شو رح تصير هالمحادثة بالنسبة إلنا،
+          ولا كنا نعرف إن كلام بسيط ممكن يكون بداية سنتين مليانين حب وعوض.
+        </p>
+
+        <div class="chapter-heart">♡</div>
+
+        <p>
+          بس من هون...
+          <br>
+          بلّشت حكايتنا. 🤍
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 2 -->
+    <section class="book-content">
+
+      <div class="memory-page">
+
+        <p class="mini-title">أول كلمة بينا 🥹</p>
+
+        <img src="IMG_0890.jpeg" class="memory-image" alt="أول رسالة">
+
+        <p class="photo-caption">
+          "عنجد القبول فيكي مليون" 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 3 -->
+    <section class="book-content">
+
+      <div class="memory-page">
+
+        <img src="IMG_0891.jpeg" class="memory-image" alt="أول رسالة">
+
+        <p class="photo-caption">
+          ومن وقتها... صار في حدا ثاني بحياتي ما قدرت أنساه.
+          🥹🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 4 -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل الثاني</p>
+
+        <h2>سنتين منّا</h2>
+
+        <p>
+          سنتين مرّوا...
+        </p>
+
+        <p>
+          بس لما أتطلع ورا، بحس إني عشت فيهم
+          عمر كامل من التفاصيل والضحكات والطلعات
+          واللحظات اللي صارت إلنا لحالنا.
+        </p>
+
+        <div class="chapter-heart">♡</div>
+
+        <p>
+          فخلينا نرجع شوي...
+          ونعيشهم من جديد.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 1 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="08f85e5d-c4ec-494d-8114-668283ebc342.jpeg"
+             alt="أول طلعة">
+
+        <p>
+          أول طلعة النا بالسيارة مع بعض 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 2 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="78A09A2A-F27D-4072-ABD0-EEF3AFDBA7E3.jpeg"
+             alt="أول مسكة إيد">
+
+        <p>
+          أول مسكة إيد بينا 🥹🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 3 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_0894.png"
+             alt="تعالي احضنك">
+
+        <p>
+          "تعالي احضنك"...
+          وهيني جاي 🤭🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 4 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_1987.jpeg"
+             alt="رأسي على كتفه">
+
+        <p>
+          أول مرة حطيت راسي على كتفك...
+          🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 5 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_2549.jpeg"
+             alt="ذكرى خاصة">
+
+        <p>
+          صورة عادية...
+          بس المكان هذا شهد أول بوسة على شفايفي 👀🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 6 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_2575.jpeg"
+             alt="على كتفك">
+
+        <p>
+          ولسا كتفك مكاني المفضل 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 7 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_4355.jpeg"
+             alt="آخر طلعة">
+
+        <p>
+          آخر طلعة...
+          والوردة من شجرة داركم 🌹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 8 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_4361.jpeg"
+             alt="بوسة على الخد">
+
+        <p>
+          بوسة على خدك،
+          عشان تعرف قديش بحبك 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 9 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_4373.jpeg"
+             alt="إيد بإيد">
+
+        <p>
+          إيدك بإيدي...
+          وبس. 🥹🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 10 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_4389.jpeg"
+             alt="بوسة على الخد">
+
+        <p>
+          والبوسة هاي إلي 🤭🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 11 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_9634.jpeg"
+             alt="Study date">
+
+        <p>
+          Study date...
+          أنا بدرس وإنت بتتفرج عليّ 😂🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- OUTING 12 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_2020.jpeg"
+             alt="صورة على الآيباد">
+
+        <p>
+          حتى الـiPad صار شاهد علينا 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- GIFTS INTRO -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل الثالث</p>
+
+        <h2>الأشياء الصغيرة اللي صارت كبيرة</h2>
+
+        <p>
+          بعض الأشياء بتصير غالية علينا...
+        </p>
+
+        <p>
+          مش بسبب قيمتها،
+          <br>
+          بسبب الشخص اللي أعطاها إلنا. 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FLOWER 1 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_6691.jpeg"
+             alt="ورد">
+
+        <p>
+          ورداتي اللي أسعدتني فيهم 🌷🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FLOWER 2 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="8f13664c-94dc-4852-8498-787a017f27d0.jpeg"
+             alt="ورد">
+
+        <p>
+          كل وردة منك كانت بتوصلني معها فرحة أكبر من حجمها 🥹🌷
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FLOWER 3 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_1899.jpeg"
+             alt="ورد">
+
+        <p>
+          وردة منك...
+          وذكرى بتضل بقلبي 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FLOWER 4 -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_2040.jpeg"
+             alt="ورد">
+
+        <p>
+          ورداتي...
+          اللي كل وحدة فيهم إلها مكان بقلبي 🌷
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- RING -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_0908.jpeg"
+             alt="Pandora promise ring">
+
+        <p>
+          أول Pandora promise ring بينا...
+          <br>
+          أول وعد صغير حملته بإيدي 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- BRACELET -->
+    <section class="book-content">
+
+      <div class="photo-memory">
+
+        <img src="IMG_4378.jpeg"
+             alt="الاسوارة">
+
+        <p>
+          الهدية اللي كنت بدي إياها...
+          <br>
+          وإنت تذكرتها وجبتها إلي 🥹🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOTS INTRO -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل الرابع</p>
+
+        <h2>أشياء عطيتني إياها من غير ما تعرف</h2>
+
+        <p>
+          يمكن إنت بتفكر إنك كنت بس بتحكي معي...
+        </p>
+
+        <p>
+          بس أنا كنت عم أجمع منك أشياء أكبر من الكلام.
+        </p>
+
+        <div class="little-words">
+          <span>أمان</span>
+          <span>حب</span>
+          <span>طمأنينة</span>
+          <span>اهتمام</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 1 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0870.jpeg" alt="رسالة">
+
+        <p>
+          حتى وإنت بتمزح...
+          كنت تخليني أحس إني غالية عليك 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 2 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0871.jpeg" alt="رسالة">
+
+        <p>
+          حتى التفاصيل الصغيرة...
+          كنت تعملها عشاني 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 3 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0872.jpeg" alt="رسالة">
+
+        <p>
+          من الكلام اللي كل مرة بقرأه
+          وبحس قديش كنت محظوظة فيك.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 4 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0873.jpeg" alt="رسالة">
+
+        <p>
+          كنت دايمًا تذكرني إني قوية...
+          وتفتخر فيني. 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 5 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0874.jpeg" alt="رسالة">
+
+        <p>
+          حتى لما كنا بعيد عن بعض...
+          كنت لسا "معي". 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 6 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0875.jpeg" alt="رسالة">
+
+        <p>
+          من الكلام اللي خلاني أعرف
+          قديش حبك كان حقيقي.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 7 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0876.jpeg" alt="رسالة">
+
+        <p>
+          "دايمًا جمبك..."
+          وأنت فعلًا كنت جمبي. 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 8 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0877.jpeg" alt="رسالة">
+
+        <p>
+          مش مجرد كلام حب...
+          كان في وعد ونيّة من قلبك. 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 9 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0878.jpeg" alt="رسالة">
+
+        <p>
+          حتى خوفك عليّ...
+          كان من أكثر الأشياء اللي حسستني بالأمان.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 10 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0879.jpeg" alt="رسالة">
+
+        <p>
+          الدعوات اللي كنت تدعيلي فيها...
+          من أغلى الأشياء اللي عطيتني إياها. 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 11 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0880.jpeg" alt="رسالة">
+
+        <p>
+          حتى زعلي ما كنت ترضى أنام وأنا شايلته. 🥹
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 12 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0881.jpeg" alt="رسالة">
+
+        <p>
+          "رنيلي..."
+          وكأنك كنت دايمًا فاتحلي باب أمان. 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 13 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0882.jpeg" alt="رسالة">
+
+        <p>
+          وفي أوقات كنت تحبني
+          بطريقة أكبر من قدرتي على الوصف.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 14 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0883.jpeg" alt="رسالة">
+
+        <p>
+          ما كنت تحب تشوفني متوجعة...
+          وكنت دايمًا تحاول تهوّنها عليّ. 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FIRST ANNIVERSARY -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0884.jpeg" alt="رسالة أول ذكرى سنوية">
+
+        <p>
+          وهون...
+          أول سنة إلنا. 🥹🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 16 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0886.jpeg" alt="رسالة">
+
+        <p>
+          "بفردلك الأرض ورد"...
+          وأنا لسا بتذكر كل كلمة. 🌷
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 17 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0887.jpeg" alt="رسالة">
+
+        <p>
+          حتى لما كنت تمزح...
+          كنت تحسسني إني ساكنة بقلبك 😂🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SCREENSHOT 18 -->
+    <section class="book-content">
+
+      <div class="message-memory">
+
+        <img src="IMG_0888.jpeg" alt="رسالة">
+
+        <p>
+          بعيد الحب...
+          ووردتك كان لازم يكون إلها ورد 🌷🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- HANDWRITTEN NOTE -->
+    <section class="book-content">
+
+      <div class="message-memory special-note">
+
+        <img src="IMG_0889.jpeg" alt="زينه حبيبة روحي">
+
+        <p>
+          "زينه حبيبة روحي بحبك" 🤍
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUIET CHAPTER -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل الخامس</p>
+
+        <h2>إنت بقيت.</h2>
+
+        <p>
+          وفي أصعب الأيام...
+          كان وجودك لحاله يعنيلي كثير.
+        </p>
+
+        <p>
+          فهمت سكوتي، وصبرت عليّ،
+          وظليت تدعيلي ولأبوي،
+          وتذكرني إنك موجود.
+        </p>
+
+        <p>
+          يمكن ما كنت دايمًا قادرة أحكي،
+          بس كنت حاسة فيك.
+        </p>
+
+        <div class="chapter-heart">♡</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LESSON -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل السادس</p>
+
+        <h2>شو علمتني السنتين؟</h2>
+
+        <p>
+          علمتني إن الحب مش بس كلمة.
+        </p>
+
+        <p>
+          الحب إنك تضل موجود،
+          تفهم، تصبر، تطمّن،
+          وتختار الشخص نفسه مرة ورا مرة.
+        </p>
+
+        <h3 class="big-statement">
+          إني اخترتك صح. 🤍
+        </h3>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROMISE -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل السابع</p>
+
+        <h2>وعد مني إلك</h2>
+
+        <p>
+          بوعدك أضل أختارك،
+          وأوقف معك،
+          وأسمعك،
+          وأحاول أفهمك حتى بالأيام اللي الدنيا فيها ثقيلة.
+        </p>
+
+        <p>
+          وبوعدك أفرح لفرحك
+          وأكون جنبك بأيامك الصعبة.
+        </p>
+
+        <div class="chapter-heart">♡</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- REQUEST -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل الثامن</p>
+
+        <h2>شغلة صغيرة بدي إياها منك</h2>
+
+        <p>
+          ضل فاهمني...
+          وضل صبور عليّ...
+          وضل حنون معي.
+        </p>
+
+        <p>
+          تذكر إني لسا عم أتعلم كيف أكمل
+          بعد ما خسرت أبوي،
+          وأوقات ممكن أتعب أو أسكت أو ما أعرف أحكي.
+        </p>
+
+        <p>
+          ما بدي منك تكون مكان حدا...
+          بديك تكون شريكي،
+          وصاحبي،
+          وأماني،
+          والشخص اللي أقدر أرجعله.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section class="book-content">
+
+      <div class="chapter-page">
+
+        <p class="chapter-number">الفصل التاسع</p>
+
+        <h2>الصفحات الجاية</h2>
+
+        <p>
+          ما بعرف شو مخبيلنا المستقبل...
+        </p>
+
+        <p>
+          بس بعرف إني بدي أشوف الصفحات الجاية
+          وأنا وإنت بنفس الحكاية.
+        </p>
+
+        <p>
+          نكبر سوا،
+          ونتعلم سوا،
+          ونضل نختار بعض.
+        </p>
+
+        <div class="chapter-heart">♡</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRE FINAL -->
+    <section class="book-content">
+
+      <div class="chapter-page quiet-ending">
+
+        <h2>سنتين.</h2>
+
+        <p>
+          ومع كل اللي صار...
+        </p>
+
+        <h3 class="big-statement">
+          لسا بختارك.
+        </h3>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="book-content">
+
+      <div class="final-page">
+
+        <p>
+          إذا سألتني اليوم
+          <br>
+          شو بدي من كل الصفحات الجاية؟
+        </p>
+
+        <h2>
+          بدي إياها كلها معك. 🤍
+        </h2>
+
+        <p>
+          سنة ثالثة.
+          <br>
+          سنة رابعة.
+          <br>
+          سنة عاشرة.
+          <br>
+          وكل السنين اللي ربنا كاتبها إلنا...
+        </p>
+
+        <p class="forever">
+          كل عام وإنت حبيبي.
+          <br>
+          هاي كانت السنة الثانية...
+          <br>
+          ولسا عنا عمر كامل من الصفحات. ♾️🤍
+        </p>
+
+        <p class="forever-stamp">
+          في الدنيا والآخرة. 🤍
+        </p>
+
+        <p class="signature">
+          — زنزونتك
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <!-- MUSIC -->
   <audio id="loveSong" loop>
     <source src="معاك قلبي.mp3" type="audio/mpeg">
   </audio>
