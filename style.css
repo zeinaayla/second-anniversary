@@ -925,5 +925,11 @@ img {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
+.first-memories .memory-card img {
+width: 100%;
+height: auto;
+aspect-ratio: auto;
+object-fit: contain;
+display: block;
 }
+
